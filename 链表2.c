@@ -32,32 +32,50 @@ link * initLinkList2() {
     link * p = NULL;
     //创建头结点
     link *temp = (link *)malloc(sizeof(link));
+    //头指针指向头结点的首地址
     p = temp;
 
     //创建其他节点（包含首元结点）
 
     for (int i = 1; i <= 5; i++)
     {
+        // 创建其他节点
         link * e = (link *) malloc(sizeof(link));
+        // 其他节点赋值
         e->elem = i;
         e->next = NULL;
+        // 头结点的指针域指向其他元素的首地址
         temp->next = e;
-        temp = temp->next;
+        //头结点指向新创建节点的首地址
+        temp = e;
     }
     
     return p;
 }
 
+// 遍历链表节点
+
+void displayLink(link * p){
+    link * temp = p;
+    while (temp)
+    {
+        printf("%d ",temp->elem);
+        temp = temp->next;
+    }
+    printf("\n");
+    
+}
+
+
 
 int main(int argc, char const *argv[])
 {
-   /* link * table = initLinkList();
-   printf("%d\n",table->next->elem);
-   printf("%d\n",table->next->next->elem);
-   printf("%d\n",tabl>next->next->next->elem);
-   printf("%d\n",table->next->next->next->next->elem);
-   printf            \n",table->next->next->->elem);
- */
+
     link * tb = initLinkList2();
-    printf("%d\n",tb->next->elem);
+    /* printf("%d\n",tb->next->elem);
+    printf("%d\n",tb->next->next->elem);
+    printf("%d\n",tb->next->next->next->elem);
+    printf("%d\n",tb->next->next->next->next->elem);
+    printf("%d\n",tb->next->next->next->next->next->elem); */
+    displayLink(tb);
 } 
